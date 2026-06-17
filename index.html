@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+<meta name="theme-color" content="#1a1916">
 <title>AutoBrick — Less Sorting. More Building.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +22,9 @@
     --surface: #f9f7f4;
     --surface-alt: #f1ede7;
     --border: #e2ddd7;
-    --accent: #d4541a;
-    --accent-light: #fdf0e8;
+    --accent: #ea7615;
+    --accent-dark: #c75f08;
+    --accent-light: #fdf1e6;
     --white: #ffffff;
     --radius: 4px;
     --radius-lg: 12px;
@@ -60,8 +62,19 @@
     letter-spacing: -0.03em;
     text-decoration: none;
     display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo .logo-mark {
+    height: 34px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-logo .logo-text {
+    display: flex;
     align-items: baseline;
-    gap: 0;
   }
 
   .nav-logo span { color: var(--accent); }
@@ -106,6 +119,41 @@
     overflow: hidden;
   }
 
+  .hero-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.05s forwards;
+  }
+
+  .hero-icon {
+    width: min(220px, 56vw);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 18px 32px rgba(26,25,22,0.16));
+  }
+
+  .hero-wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 6vw, 52px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .hero-wordmark .accent { color: var(--accent); }
+
+  .hero-tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+    letter-spacing: 0.01em;
+  }
+
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
@@ -116,7 +164,7 @@
     text-transform: uppercase;
     color: var(--accent);
     background: var(--accent-light);
-    border: 1px solid #f0c4a6;
+    border: 1px solid #f6c89e;
     padding: 6px 14px;
     border-radius: 100px;
     margin-bottom: 32px;
@@ -183,7 +231,7 @@
     letter-spacing: 0.01em;
   }
 
-  .btn-primary:hover { background: #b84216; }
+  .btn-primary:hover { background: var(--accent-dark); }
   .btn-primary:active { transform: scale(0.98); }
 
   .hero-note {
@@ -574,6 +622,18 @@
     gap: 16px;
   }
 
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-mark {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
+
   .footer-logo {
     font-family: 'DM Serif Display', serif;
     font-size: 18px;
@@ -804,7 +864,7 @@
     margin-top: 8px;
   }
 
-  .btn-submit:hover { background: #b84216; }
+  .btn-submit:hover { background: var(--accent-dark); }
 
   /* THANK YOU STATE */
   .thank-you {
@@ -848,6 +908,7 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
+    .nav-slogan { display: none; }
     .stats-bar { padding: 28px 20px; gap: 12px; }
     .stat-item { padding: 0 20px; }
     .features-grid { grid-template-columns: 1fr; }
@@ -861,7 +922,10 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#"><span style="color:var(--ink)">Auto</span><span>Brick</span><span class="nav-slogan">Less Sorting. More Building.</span></a>
+  <a class="nav-logo" href="#">
+    <img class="logo-mark" src="autobrick-logo.png" alt="AutoBrick logo" width="46" height="34">
+    <span class="logo-text"><span style="color:var(--ink)">Auto</span><span>Brick</span><span class="nav-slogan">Less Sorting. More Building.</span></span>
+  </a>
   <button class="nav-cta" onclick="openModal()">Join the waitlist</button>
 </nav>
 
@@ -869,39 +933,10 @@
 <section class="hero">
   <div class="hero-brick-grid" id="brickGrid"></div>
 
-  <div style="width:min(420px,80vw);margin-bottom:40px;opacity:0;animation:fadeUp 0.6s 0.05s forwards;">
-    <svg width="100%" viewBox="0 0 680 270" xmlns="http://www.w3.org/2000/svg">
-      <!-- Dark brick (back, upper) -->
-      <rect x="118" y="98" width="112" height="54" rx="5" fill="#1a1916"/>
-      <rect x="134" y="85" width="22" height="13" rx="4" fill="#1a1916"/>
-      <rect x="166" y="85" width="22" height="13" rx="4" fill="#1a1916"/>
-      <rect x="198" y="85" width="22" height="13" rx="4" fill="#1a1916"/>
-      <rect x="118" y="98" width="112" height="9" rx="5" fill="#3d3c37" opacity="0.6"/>
-      <!-- Orange brick (front, lower) -->
-      <rect x="72" y="142" width="112" height="54" rx="5" fill="#d4541a"/>
-      <rect x="88" y="129" width="22" height="13" rx="4" fill="#d4541a"/>
-      <rect x="120" y="129" width="22" height="13" rx="4" fill="#d4541a"/>
-      <rect x="152" y="129" width="22" height="13" rx="4" fill="#d4541a"/>
-      <rect x="72" y="142" width="112" height="10" rx="5" fill="#e8682f" opacity="0.45"/>
-      <!-- Conveyor -->
-      <rect x="72" y="212" width="160" height="2" rx="1" fill="#e2ddd7"/>
-      <rect x="72" y="224" width="160" height="2" rx="1" fill="#e2ddd7"/>
-      <circle cx="86" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="106" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="126" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="146" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="166" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="186" cy="218" r="4.5" fill="#b0ada6"/>
-      <polygon points="196,213 212,218 196,223" fill="#d4541a"/>
-      <!-- Wordmark -->
-      <text y="168" font-size="68" letter-spacing="-2" font-family="'DM Serif Display', Georgia, serif">
-        <tspan x="256" fill="#1a1916">Auto</tspan><tspan fill="#d4541a">Brick</tspan>
-      </text>
-      <!-- Divider -->
-      <rect x="256" y="180" width="372" height="1.5" rx="0.75" fill="#e2ddd7"/>
-      <!-- Slogan -->
-      <text x="258" y="214" font-size="20" fill="#6b6960" letter-spacing="0.3" font-family="'DM Serif Display', Georgia, serif" font-style="italic">Less Sorting. More Building.</text>
-    </svg>
+  <div class="hero-logo">
+    <img class="hero-icon" src="autobrick-logo.png" alt="AutoBrick — automatic brick sorter" width="220" height="161">
+    <div class="hero-wordmark">Auto<span class="accent">Brick</span></div>
+    <div class="hero-tagline">Less Sorting. More Building.</div>
   </div>
 
   <div class="hero-eyebrow">Now accepting early access</div>
@@ -953,7 +988,7 @@
       <div class="step">
         <div class="step-number">01</div>
         <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#d4541a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea7615" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
@@ -964,7 +999,7 @@
       <div class="step">
         <div class="step-number">02</div>
         <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#d4541a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea7615" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </div>
@@ -974,7 +1009,7 @@
       <div class="step">
         <div class="step-number">03</div>
         <div class="step-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#d4541a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ea7615" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
           </svg>
         </div>
@@ -1028,26 +1063,26 @@
             <rect x="90" y="55" width="68" height="50" rx="6" fill="#f1ede7"/>
             <text x="124" y="76" font-size="9" fill="#6b6960" text-anchor="middle" font-weight="500">V-FUNNEL</text>
             <path d="M104 85 L124 103 L144 85" stroke="#b0ada6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="124" cy="106" r="3" fill="#d4541a"/>
+            <circle cx="124" cy="106" r="3" fill="#ea7615"/>
             <!-- Arrow -->
             <path d="M162 80 L176 80" stroke="#e2ddd7" stroke-width="1.5" stroke-linecap="round"/>
             <polygon points="174,76 180,80 174,84" fill="#e2ddd7"/>
             <!-- Vision -->
             <rect x="180" y="55" width="68" height="50" rx="6" fill="#f1ede7"/>
             <text x="214" y="76" font-size="9" fill="#6b6960" text-anchor="middle" font-weight="500">VISION AI</text>
-            <circle cx="214" cy="97" r="10" stroke="#d4541a" stroke-width="1.5" fill="none"/>
-            <circle cx="214" cy="97" r="3.5" fill="#d4541a"/>
-            <line x1="221" y1="104" x2="226" y2="109" stroke="#d4541a" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="214" cy="97" r="10" stroke="#ea7615" stroke-width="1.5" fill="none"/>
+            <circle cx="214" cy="97" r="3.5" fill="#ea7615"/>
+            <line x1="221" y1="104" x2="226" y2="109" stroke="#ea7615" stroke-width="1.5" stroke-linecap="round"/>
             <!-- Arrow -->
             <path d="M252 80 L266 80" stroke="#e2ddd7" stroke-width="1.5" stroke-linecap="round"/>
             <polygon points="264,76 270,80 264,84" fill="#e2ddd7"/>
             <!-- Sorted -->
-            <rect x="270" y="55" width="68" height="50" rx="6" fill="#d4541a" opacity="0.1"/>
-            <rect x="270" y="55" width="68" height="50" rx="6" stroke="#d4541a" stroke-width="1" fill="none"/>
-            <text x="304" y="76" font-size="9" fill="#d4541a" text-anchor="middle" font-weight="500">SORTED</text>
-            <rect x="282" y="83" width="40" height="6" rx="2" fill="#d4541a" opacity="0.7"/>
+            <rect x="270" y="55" width="68" height="50" rx="6" fill="#ea7615" opacity="0.1"/>
+            <rect x="270" y="55" width="68" height="50" rx="6" stroke="#ea7615" stroke-width="1" fill="none"/>
+            <text x="304" y="76" font-size="9" fill="#ea7615" text-anchor="middle" font-weight="500">SORTED</text>
+            <rect x="282" y="83" width="40" height="6" rx="2" fill="#ea7615" opacity="0.7"/>
             <rect x="282" y="93" width="28" height="6" rx="2" fill="#b0ada6" opacity="0.5"/>
-            <rect x="282" y="103" width="34" height="6" rx="2" fill="#d4541a" opacity="0.4"/>
+            <rect x="282" y="103" width="34" height="6" rx="2" fill="#ea7615" opacity="0.4"/>
             <!-- Overhead camera label -->
             <text x="170" y="22" font-size="8" fill="#b0ada6" text-anchor="middle">overhead camera monitors automatically</text>
             <path d="M80 30 Q80 44 100 55" stroke="#e2ddd7" stroke-width="1" fill="none" stroke-dasharray="3,2"/>
@@ -1103,33 +1138,9 @@
 
 <!-- FOOTER -->
 <footer>
-  <div style="width:200px;">
-    <svg width="100%" viewBox="0 0 680 270" xmlns="http://www.w3.org/2000/svg">
-      <rect x="118" y="98" width="112" height="54" rx="5" fill="#1a1916"/>
-      <rect x="134" y="85" width="22" height="13" rx="4" fill="#1a1916"/>
-      <rect x="166" y="85" width="22" height="13" rx="4" fill="#1a1916"/>
-      <rect x="198" y="85" width="22" height="13" rx="4" fill="#1a1916"/>
-      <rect x="118" y="98" width="112" height="9" rx="5" fill="#3d3c37" opacity="0.6"/>
-      <rect x="72" y="142" width="112" height="54" rx="5" fill="#d4541a"/>
-      <rect x="88" y="129" width="22" height="13" rx="4" fill="#d4541a"/>
-      <rect x="120" y="129" width="22" height="13" rx="4" fill="#d4541a"/>
-      <rect x="152" y="129" width="22" height="13" rx="4" fill="#d4541a"/>
-      <rect x="72" y="142" width="112" height="10" rx="5" fill="#e8682f" opacity="0.45"/>
-      <rect x="72" y="212" width="160" height="2" rx="1" fill="#e2ddd7"/>
-      <rect x="72" y="224" width="160" height="2" rx="1" fill="#e2ddd7"/>
-      <circle cx="86" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="106" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="126" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="146" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="166" cy="218" r="4.5" fill="#b0ada6"/>
-      <circle cx="186" cy="218" r="4.5" fill="#b0ada6"/>
-      <polygon points="196,213 212,218 196,223" fill="#d4541a"/>
-      <text y="168" font-size="68" letter-spacing="-2" font-family="'DM Serif Display', Georgia, serif">
-        <tspan x="256" fill="#1a1916">Auto</tspan><tspan fill="#d4541a">Brick</tspan>
-      </text>
-      <rect x="256" y="180" width="372" height="1.5" rx="0.75" fill="#e2ddd7"/>
-      <text x="258" y="214" font-size="20" fill="#6b6960" letter-spacing="0.3" font-family="'DM Serif Display', Georgia, serif" font-style="italic">Less Sorting. More Building.</text>
-    </svg>
+  <div class="footer-brand">
+    <img class="footer-mark" src="autobrick-logo.png" alt="AutoBrick logo" width="54" height="40">
+    <span class="footer-logo">Auto<span>Brick</span></span>
   </div>
   <div class="footer-copy">© 2026 AutoBrick Systems. Less Sorting. More Building.</div>
 </footer>
